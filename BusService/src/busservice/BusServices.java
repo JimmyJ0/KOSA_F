@@ -10,5 +10,7 @@ public interface BusServices {
 	void registerComponent(AbstractComponent component);
 
 	void sendEvent(Event event);
+	
+	void postEvent(Event event);
 
 }

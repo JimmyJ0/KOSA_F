@@ -70,6 +70,7 @@ public class DocumentSystemService extends AbstractComponent{
 		
 		Event ticketPrintedEvent = new Event("TicketPrinted", new HashMap<>());
 		busService.sendEvent(ticketPrintedEvent);
+		busService.postEvent(new Event("TicketPrinted", new HashMap<>()));
 	}
 
 

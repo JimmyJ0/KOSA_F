@@ -24,7 +24,8 @@ public class ComponentServiceBus implements BusServices, EventAdmin {
 	// EventAdmin
 	@Override
 	public void postEvent(Event event) {
-		// TODO Auto-generated method stub
+		
+		System.out.println("EVENT KOMMT REIN");
 		
 	}
 
