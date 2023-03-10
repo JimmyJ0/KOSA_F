@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: RouteSystemService
-Bundle-SymbolicName: RouteSystemService
+Bundle-SymbolicName: RouteSystem
 Bundle-Version: 1.0
 Bundle-Activator: routesystemservice.Activator
 Bundle-RequiredExecutionEnvironment: JavaSE-17

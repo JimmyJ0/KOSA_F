@@ -1,7 +1,7 @@
 package pricingsystem.behaviour;
 
 import java.util.Arrays;
-import java.util.Optional;
+import java.util.HashMap;
 
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleException;
@@ -13,6 +13,7 @@ import pricingsystem.Activator;
 import pricingsystem.behaviour.service.IPriceable;
 import pricingsystem.configuration.InputValidator;
 import pricingsystem.structure.Price;
+import pricingsystem.structure.RoutePrice;
 
 public class PricingSystemService extends AbstractComponent {
 
@@ -69,8 +70,8 @@ public class PricingSystemService extends AbstractComponent {
 		System.out.println(String.format("2. GünstigerReisen-Tarif: %.2f€", price.getGRT()));
 		System.out.println(String.format("3. Schnäppchen-Tarif: %.2f€", price.getST()));
 		System.out.println("Please select your Ticketoption: ");
-		int input = iv.getSingleNumber(3);
-//		int input = 3;
+//		int input = iv.getSingleNumber(3);
+		int input = 3;
 
 		double chosenPrice = 0.0;
 		String tarif = "";
@@ -90,6 +91,16 @@ public class PricingSystemService extends AbstractComponent {
 		}
 
 		System.out.println(String.format("The selected Tarif is the '%s' with a Price of %.2f€.", tarif, chosenPrice));
+		RoutePrice routePrice = new RoutePrice(priceable.getRoute(), priceable.getDistance(), tarif, chosenPrice);
+		
+		HashMap<String, RoutePrice> routeProperties = new HashMap<String, RoutePrice>();
+		routeProperties.put("RouteDetails", routePrice);
+		
+		Event routeCreatedEvent = new Event("PriceAdded", routeProperties);
+		busService.sendEvent(routeCreatedEvent);
+
+		
+		
 	}
 
 }

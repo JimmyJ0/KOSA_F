@@ -4,7 +4,8 @@ Bundle-Name: PricingSystem
 Bundle-SymbolicName: PricingSystem
 Bundle-Version: 1.0
 Export-Package: pricingsystem.behaviour,
- pricingsystem.behaviour.service
+ pricingsystem.behaviour.service,
+ pricingsystem.structure
 Bundle-Activator: pricingsystem.Activator
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: PricingSystem

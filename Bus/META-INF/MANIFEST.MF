@@ -9,9 +9,11 @@ Automatic-Module-Name: Bus
 Import-Package: abstractcomponent,
  busservice,
  componentservice.service,
+ documentsystemservice.service,
  org.osgi.framework;version="1.3.0",
  org.osgi.service.event;version="1.4.1",
  pricingsystem.behaviour.service,
+ pricingsystem.structure,
  routesystemservice,
  routesystemservice.behaviour,
  routesystemservice.structure

@@ -9,9 +9,11 @@ Import-Package: abstractcomponent,
  busservice,
  componentservice.service,
  documentsystemservice.behaviour,
+ messagingsystem.behaviour,
  org.osgi.framework,
  org.osgi.service.event;version="1.4.1",
  pricingsystem.behaviour,
+ printingsystem.behaviour,
  routesystemservice,
  routesystemservice.behaviour
 Bundle-Activator: ticketautomaton.Activator

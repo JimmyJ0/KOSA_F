@@ -15,7 +15,7 @@ public class RouteSystemToPricingSystemAdapter {
 
 	}
 	
-	public void map(AbstractComponent targetComponent, Event event) {
+	public void map(AbstractComponent pricingSystem, Event event) {
 		Route route = (Route) event.getProperty("Route");
 		HashMap<String, IPriceable> eventProperties = new HashMap<String, IPriceable>();
 		
@@ -36,7 +36,7 @@ public class RouteSystemToPricingSystemAdapter {
 				
 		eventProperties.put("route", priceable);
 		
-		targetComponent.handleEvent(new Event("RouteCreated", eventProperties));
+		pricingSystem.handleEvent(new Event("RouteCreated", eventProperties));
 
 	}
 	
