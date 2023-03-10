@@ -3,8 +3,10 @@ package bus.adapter;
 import java.util.HashMap;
 
 import org.osgi.service.event.Event;
-import routesystemservice.structure.Route;
+
 import abstractcomponent.AbstractComponent;
+import pricingsystem.behaviour.service.IPriceable;
+import routesystemservice.structure.Route;
 
 public class RouteSystemToPricingSystemAdapter {
 	
@@ -15,10 +17,27 @@ public class RouteSystemToPricingSystemAdapter {
 	
 	public void map(AbstractComponent targetComponent, Event event) {
 		Route route = (Route) event.getProperty("Route");
-		System.out.println(route.getDistance());
-		HashMap<String, Double> eventProperties = new HashMap<String, Double>();
-		eventProperties.put("distance", ((Route) event.getProperty("Route")).getDistance());
-		targetComponent.handleEvent(new Event("RouteCreated",eventProperties));
+		HashMap<String, IPriceable> eventProperties = new HashMap<String, IPriceable>();
+		
+		IPriceable priceable = new IPriceable() {
+
+
+			@Override
+			public double getDistance() {
+				return route.getDistance();
+			}
+
+			@Override
+			public String getRoute() {
+				return route.getRoute().toString();
+			}
+			
+		};
+				
+		eventProperties.put("route", priceable);
+		
+		targetComponent.handleEvent(new Event("RouteCreated", eventProperties));
+
 	}
 	
 	

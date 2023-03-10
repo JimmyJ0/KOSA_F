@@ -1,12 +1,13 @@
 package ticketautomaton;
 
-import bus.behaviour.ComponentServiceBus;
 import java.util.HashMap;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.event.Event;
 
+import bus.behaviour.ComponentServiceBus;
+import documentsystemservice.behaviour.DocumentSystemService;
 import pricingsystem.behaviour.PricingSystemService;
 import routesystemservice.behaviour.RouteSystemService;
 
@@ -19,6 +20,7 @@ public class Activator implements BundleActivator {
 	private ComponentServiceBus componentServiceBus;
 	private RouteSystemService routeSystemService;
 	private PricingSystemService pricingSystemService;
+	private DocumentSystemService documentSystemService;
 
 	private static BundleContext context;
 
@@ -30,13 +32,16 @@ public class Activator implements BundleActivator {
 		componentServiceBus = new ComponentServiceBus();
 		routeSystemService = new RouteSystemService("RouteSystem");
 		pricingSystemService = new PricingSystemService("PricingSystem");
+		documentSystemService = new DocumentSystemService("DocumentSystem");
 		
 		bundleContext.registerService(ComponentServiceBus.class, componentServiceBus, null);
 		bundleContext.registerService(RouteSystemService.class, routeSystemService, null);
 		bundleContext.registerService(PricingSystemService.class, pricingSystemService, null);
+		bundleContext.registerService(DocumentSystemService.class, documentSystemService, null);
 		
 		routeSystemService.setBus(componentServiceBus);
 		pricingSystemService.setBus(componentServiceBus);
+		documentSystemService.setBus(componentServiceBus);
 		
 		componentServiceBus.sendEvent(new Event("TicketAutomatonStarted", new HashMap<>()));
 		

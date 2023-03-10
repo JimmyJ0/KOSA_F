@@ -130,7 +130,7 @@ public class RouteSystemService extends AbstractComponent{
 		Routes chosenRoute = availableRoutes.get(1); // ! ZUM TESTEN
 
 		Route newRoute = new Route(chosenRoute);
-
+		
 		HashMap<String, Route> routeProperties = new HashMap<String, Route>();
 		routeProperties.put("Route", newRoute);
 		

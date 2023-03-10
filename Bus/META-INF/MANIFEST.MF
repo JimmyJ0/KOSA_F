@@ -11,6 +11,7 @@ Import-Package: abstractcomponent,
  componentservice.service,
  org.osgi.framework;version="1.3.0",
  org.osgi.service.event;version="1.4.1",
+ pricingsystem.behaviour.service,
  routesystemservice,
  routesystemservice.behaviour,
  routesystemservice.structure

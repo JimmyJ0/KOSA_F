@@ -10,6 +10,7 @@ import org.osgi.service.event.Event;
 import abstractcomponent.AbstractComponent;
 import busservice.BusServices;
 import pricingsystem.Activator;
+import pricingsystem.behaviour.service.IPriceable;
 import pricingsystem.configuration.InputValidator;
 import pricingsystem.structure.Price;
 
@@ -33,9 +34,9 @@ public class PricingSystemService extends AbstractComponent {
 
 	@Override
 	public void handleEvent(Event event) {
-		System.out.println("BASKDASKLD: " + event.getProperty("distance"));
-		runPricingSystem((double) event.getProperty("distance"));
-
+		System.out.println(((IPriceable) event.getProperty("route")).getDistance());
+		System.out.println(((IPriceable) event.getProperty("route")).getRoute());
+		runPricingSystem((IPriceable) event.getProperty("route"));
 	}
 
 	
@@ -52,7 +53,7 @@ public class PricingSystemService extends AbstractComponent {
 		});
 	}
 
-	private void runPricingSystem(double distance) {
+	private void runPricingSystem(IPriceable priceable) {
 
 		InputValidator iv = new InputValidator();
 		disableConsole();
@@ -62,7 +63,7 @@ public class PricingSystemService extends AbstractComponent {
 		// System.out.println("DISTANCE: " + event.getProperty("distance"));
 
 //		Price price = new Price(Double.parseDouble(event.getProperty("distance").toString()));
-		Price price = new Price(distance);
+		Price price = new Price(priceable.getDistance());
 		
 		System.out.println(String.format("1. Normaltarif: %.2f€", price.getNT()));
 		System.out.println(String.format("2. GünstigerReisen-Tarif: %.2f€", price.getGRT()));
