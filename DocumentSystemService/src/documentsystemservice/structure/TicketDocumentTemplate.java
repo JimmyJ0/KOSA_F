@@ -8,6 +8,7 @@ public abstract class TicketDocumentTemplate {
 	private double distance;
 	private String tarif;
 	private double price;
+	private String ticketContent;
 	
 	private LocalDate date;
 	
@@ -41,7 +42,14 @@ public abstract class TicketDocumentTemplate {
 		return date.toString();
 	}
 	
-	
+	public String getTicketContent() {
+		return this.ticketContent;
+	}
+
+	public void setTicketContent(String ticketContent) {
+		this.ticketContent = ticketContent;
+	}
+
 
 	
 }

@@ -6,6 +6,8 @@ import org.osgi.service.event.Event;
 import org.osgi.service.event.EventAdmin;
 
 import abstractcomponent.AbstractComponent;
+import bus.adapter.DocumentSystemToMessagingSystemAdapter;
+import bus.adapter.DocumentSystemToPrintingSystemAdapter;
 import bus.adapter.PricingSystemToDocumentSystemAdapter;
 import bus.adapter.RouteSystemToPricingSystemAdapter;
 import busservice.BusServices;
@@ -25,7 +27,9 @@ public class ComponentServiceBus implements BusServices, EventAdmin {
 	@Override
 	public void postEvent(Event event) {
 		
-		System.out.println("EVENT KOMMT REIN");
+		System.out.println("Ticket wird gedruckt.");
+		new DocumentSystemToPrintingSystemAdapter().map(components.get("PrintingSystem"), event);
+
 		
 	}
 
@@ -39,8 +43,7 @@ public class ComponentServiceBus implements BusServices, EventAdmin {
 		case "RouteCreated": new RouteSystemToPricingSystemAdapter().map(components.get("PricingSystem"), event); break;
 		case "PriceAdded": new PricingSystemToDocumentSystemAdapter().map(components.get("DocumentSystem"), event); break;
 		
-		case "TicketPrinted": components.get("MessagingSystem").handleEvent(event);
-		case "TicketCreated": 
+		case "TicketCreated": new DocumentSystemToMessagingSystemAdapter().map(components.get("MessagingSystem"), event); break;
 
 		}
 	

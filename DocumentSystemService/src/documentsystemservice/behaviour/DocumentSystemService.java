@@ -41,23 +41,26 @@ public class DocumentSystemService extends AbstractComponent{
 		TicketFactory ticketFactory = new TicketFactory();
 		TicketDocumentTemplate ticket = ticketFactory.getTicketDocument(routeDetails.getTarif(), routeDetails);
 		
-		printTicket(ticket);
+		ticket = createTicket(ticket);
 		
 		HashMap<String, TicketDocumentTemplate> ticketProperties = new HashMap<>();
 		ticketProperties.put("ticket", ticket);
 		
 		Event ticketCreatedEvent = new Event("TicketCreated", ticketProperties);
 		busService.sendEvent(ticketCreatedEvent);
+		
+		busService.postEvent(ticketCreatedEvent);
 	}
 	
-	private void printTicket(TicketDocumentTemplate ticket) {
+	private TicketDocumentTemplate createTicket(TicketDocumentTemplate ticket) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("\n\nThanks for traveling with CRAZY TRAVEL \n\n");
 		sb.append("Tarif: " + ticket.getTarif() + "\n");
 		sb.append("Route: " + ticket.getRoute() + "\n");
 		sb.append("Distance: " + ticket.getDistance() + " km \n");
-		sb.append("Price: " + ticket.getPrice() + " EURO \n\n");
-		
+		sb.append("Price: " + ticket.getPrice() + " EURO \n");
+		sb.append("Datum: " + ticket.getDate() + "\n\n");
+
 		switch(ticket.getTarif()) {
 		case "GünstigerReisen-Tarif": sb.append(((GuenstigerReisenTarif) ticket).getSomeAdditionalGuenstigerReisenInfos()); break;
 		case "NormalTarif": sb.append(((NormalTarif) ticket).getSomeAdditionalNormalTarifInfos()); break;
@@ -66,11 +69,9 @@ public class DocumentSystemService extends AbstractComponent{
 		
 		sb.append("\n\nWe wish you a pleasant trip!");
 		
-		System.out.println(sb.toString());
-		
-		Event ticketPrintedEvent = new Event("TicketPrinted", new HashMap<>());
-		busService.sendEvent(ticketPrintedEvent);
-		busService.postEvent(new Event("TicketPrinted", new HashMap<>()));
+		ticket.setTicketContent(sb.toString());
+
+		return ticket;
 	}
 
 

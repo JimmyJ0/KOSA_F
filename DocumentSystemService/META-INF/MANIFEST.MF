@@ -13,4 +13,5 @@ Import-Package: abstractcomponent,
  org.osgi.service.event;version="1.4.1"
 Bundle-ActivationPolicy: lazy
 Export-Package: documentsystemservice.behaviour,
- documentsystemservice.service
+ documentsystemservice.service,
+ documentsystemservice.structure

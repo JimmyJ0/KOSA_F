@@ -57,7 +57,7 @@ public class PricingSystemService extends AbstractComponent {
 	private void runPricingSystem(IPriceable priceable) {
 
 		InputValidator iv = new InputValidator();
-		disableConsole();
+//		disableConsole();
 		System.out.println("\n\n");
 		// System.out.println("TOPIC: " + event.getTopic());
 		// System.out.println("ROUTE: " + event.getProperty("route"));
