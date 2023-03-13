@@ -56,7 +56,7 @@ public class Activator implements BundleActivator {
 		componentServiceBus.sendEvent(new Event("TicketAutomatonStarted", new HashMap<>()));
 	
 		Activator.context = bundleContext;
-		//TODO PrintingSystem rein und Automaton automatisch restarten lassen
+		//TODO Automaton automatisch restarten lassen
 
 	}
 
