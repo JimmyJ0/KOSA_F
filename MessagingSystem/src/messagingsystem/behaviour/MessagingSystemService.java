@@ -31,9 +31,10 @@ public class MessagingSystemService extends AbstractComponent {
 		printConfirmation(messagable.getContent());
 	}
 	
-	public void printConfirmation(String details) {
+	public boolean printConfirmation(String details) {
 		
 		System.out.println(details);
+		return true;
 	}
 
 

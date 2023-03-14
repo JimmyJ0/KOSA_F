@@ -37,17 +37,18 @@ public class PrintingSystemService extends AbstractComponent {
 		
 	}
 
-	private void printDetails(String printDetails) {
+	public boolean printDetails(String printDetails) {
 		 try {
 	            FileWriter fileWriter = new FileWriter(LOG_FILE, false); 
 	            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 	            bufferedWriter.write(printDetails);
 	            bufferedWriter.newLine(); 
 	            bufferedWriter.close();
-	            System.out.println("Log message written to " + LOG_FILE);
+	            System.out.println("Ticket written to " + LOG_FILE);
 	        } catch (IOException e) {
-	            System.err.println("Error writing to log file: " + e);
+	            System.err.println("Error writing the ticket: " + e);
 	        }
+		return true;
 		
 	}
 }

@@ -54,7 +54,7 @@ public class PricingSystemService extends AbstractComponent {
 		});
 	}
 
-	private void runPricingSystem(IPriceable priceable) {
+	public RoutePrice runPricingSystem(IPriceable priceable) {
 
 		InputValidator iv = new InputValidator();
 //		disableConsole();
@@ -93,15 +93,17 @@ public class PricingSystemService extends AbstractComponent {
 		System.out.println(String.format("The selected Tarif is the '%s' with a Price of %.2f€.", tarif, chosenPrice));
 		RoutePrice routePrice = new RoutePrice(priceable.getRoute(), priceable.getDistance(), tarif, chosenPrice);
 		
+
+		
+		return routePrice;
+	}
+
+	public void sendPriceAddedEvent(RoutePrice routePrice) {
 		HashMap<String, RoutePrice> routeProperties = new HashMap<String, RoutePrice>();
 		routeProperties.put("RouteDetails", routePrice);
 		
 		Event routeCreatedEvent = new Event("PriceAdded", routeProperties);
 		busService.sendEvent(routeCreatedEvent);
-
-		
-		
 	}
-
 
 }

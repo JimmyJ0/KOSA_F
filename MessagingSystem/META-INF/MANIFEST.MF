@@ -14,3 +14,5 @@ Import-Package: abstractcomponent,
 Bundle-ActivationPolicy: lazy
 Export-Package: messagingsystem.behaviour,
  messagingsystem.service
+Require-Bundle: org.junit,
+ junit-jupiter-api
