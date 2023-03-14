@@ -4,6 +4,7 @@ import org.osgi.service.event.Event;
 
 import abstractcomponent.AbstractComponent;
 import busservice.BusServices;
+import messagingsystem.service.IMessagable;
 
 public class MessagingSystemService extends AbstractComponent {
 	
@@ -25,11 +26,14 @@ public class MessagingSystemService extends AbstractComponent {
 
 	@Override
 	public void handleEvent(Event event) {
-		printConfirmation();
+		IMessagable messagable = (IMessagable) event.getProperty("MessagableDetails");
+		
+		printConfirmation(messagable.getContent());
 	}
 	
-	public void printConfirmation() {
-		System.out.println("\n\nCONFIRMATION \n");
+	public void printConfirmation(String details) {
+		
+		System.out.println(details);
 	}
 
 

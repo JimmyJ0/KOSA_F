@@ -47,6 +47,8 @@ class DocumentSystemServiceTest {
 
 		};
 		
+		assertNotNull(documentSystemService.createTicket(routeDetails));
+		
 		
 		
 	}
