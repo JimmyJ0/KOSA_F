@@ -34,25 +34,21 @@ public class DocumentSystemService extends AbstractComponent{
 		System.out.println(event.getTopic());
 		IRouteDetails routeDetails = ((IRouteDetails) event.getProperty("RouteDetails"));
 		
-		createTicket(routeDetails);
+		TicketDocumentTemplate ticket = createTicket(routeDetails);
+		sendTicketCreatedEvent(ticket);
 	}
 	
-	private void createTicket(IRouteDetails routeDetails) {
+	public TicketDocumentTemplate createTicket(IRouteDetails routeDetails) {
 		TicketFactory ticketFactory = new TicketFactory();
 		TicketDocumentTemplate ticket = ticketFactory.getTicketDocument(routeDetails.getTarif(), routeDetails);
 		
-		ticket = createTicket(ticket);
+		ticket = createTicketDocument(ticket);
+		return ticket;
 		
-		HashMap<String, TicketDocumentTemplate> ticketProperties = new HashMap<>();
-		ticketProperties.put("ticket", ticket);
-		
-		Event ticketCreatedEvent = new Event("TicketCreated", ticketProperties);
-		busService.sendEvent(ticketCreatedEvent);
-		
-		busService.postEvent(ticketCreatedEvent);
+
 	}
 	
-	private TicketDocumentTemplate createTicket(TicketDocumentTemplate ticket) {
+	private TicketDocumentTemplate createTicketDocument(TicketDocumentTemplate ticket) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("\n\nThanks for traveling with CRAZY TRAVEL \n\n");
 		sb.append("Tarif: " + ticket.getTarif() + "\n");
@@ -74,6 +70,15 @@ public class DocumentSystemService extends AbstractComponent{
 		return ticket;
 	}
 
+	private void sendTicketCreatedEvent(TicketDocumentTemplate ticket) {
+		HashMap<String, TicketDocumentTemplate> ticketProperties = new HashMap<>();
+		ticketProperties.put("ticket", ticket);
+		
+		Event ticketCreatedEvent = new Event("TicketCreated", ticketProperties);
+		busService.sendEvent(ticketCreatedEvent);
+		
+		busService.postEvent(ticketCreatedEvent);
+	}
 
 
 

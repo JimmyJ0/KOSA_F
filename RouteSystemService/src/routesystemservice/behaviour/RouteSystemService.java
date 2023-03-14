@@ -27,7 +27,8 @@ public class RouteSystemService extends AbstractComponent{
 
 	@Override
 	public void handleEvent(Event event) {
-		createRoute();
+		Route route = createRoute();
+		sendRouteCreatedEvent(route);
 	}
 
 	public void setBus(BusServices bus) {
@@ -61,7 +62,7 @@ public class RouteSystemService extends AbstractComponent{
 	}
 	
 	
-	public void createRoute() {
+	public Route createRoute() {
 //		disableConsoleForProjectTest(); 
 		InputValidator iv = new InputValidator();
 		HashMap<Integer, Locations> locations = new HashMap<Integer, Locations>();
@@ -131,12 +132,18 @@ public class RouteSystemService extends AbstractComponent{
 
 		Route newRoute = new Route(chosenRoute);
 		
+
+		
+		return newRoute;
+
+	}
+	
+	public void sendRouteCreatedEvent(Route route) {
 		HashMap<String, Route> routeProperties = new HashMap<String, Route>();
-		routeProperties.put("Route", newRoute);
+		routeProperties.put("Route", route);
 		
 		Event routeCreatedEvent = new Event("RouteCreated", routeProperties);
 		busService.sendEvent(routeCreatedEvent);
-
 	}
 	
 }

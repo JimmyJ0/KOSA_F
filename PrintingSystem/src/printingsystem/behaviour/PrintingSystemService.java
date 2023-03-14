@@ -13,7 +13,7 @@ import printingsystem.behaviour.service.IPrintableDetails;
 public class PrintingSystemService extends AbstractComponent {
 
 	private BusServices busService;
-	private static final String LOG_FILE = "C:\\Logs\\ticket.log";
+	private static final String LOG_FILE = "ticket.log";
 	
 	public PrintingSystemService(String name) {
 		super(name);
