@@ -94,8 +94,7 @@ public class PricingSystemService extends AbstractComponent {
 
 		System.out.println(String.format("The selected Tarif is the '%s' with a Price of %.2f€.", tarif, chosenPrice));
 		RoutePrice routePrice = new RoutePrice(priceable.getRoute(), priceable.getDistance(), tarif, chosenPrice);
-		
-
+		sendPriceAddedEvent(routePrice);
 		
 		return routePrice;
 	}
