@@ -3,11 +3,11 @@ package routesystemservice.behaviour;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleException;
 import org.osgi.service.event.Event;
-
 import abstractcomponent.AbstractComponent;
 import busservice.BusServices;
 import routesystemservice.Activator;
@@ -19,7 +19,10 @@ import routesystemservice.structure.Routes;
 
 public class RouteSystemService extends AbstractComponent{
 	
+	private static final Logger LOG = Logger.getLogger(RouteSystemService.class.getName());
+	
 	private BusServices busService;
+	
 	
 	public RouteSystemService(String name) {
 		super(name);
@@ -133,7 +136,7 @@ public class RouteSystemService extends AbstractComponent{
 		Route newRoute = new Route(chosenRoute);
 		
 
-		
+		LOG.info("Route Created");
 		return newRoute;
 
 	}

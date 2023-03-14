@@ -1,6 +1,7 @@
 package bus.behaviour;
 
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventAdmin;
@@ -13,14 +14,15 @@ import bus.adapter.RouteSystemToPricingSystemAdapter;
 import busservice.BusServices;
 
 public class ComponentServiceBus implements BusServices, EventAdmin {
+	private static final Logger LOG = Logger.getLogger(ComponentServiceBus.class.getName());
+
 	
 	HashMap<String, AbstractComponent> components = new HashMap<String, AbstractComponent>();
 	
 	@Override
 	public void registerComponent(AbstractComponent component) {
 		components.put(component.getName(), component);
-		System.out.println("Registered Component: " + component);
-		
+		LOG.info("Registered Component: " + component);
 	}
 	
 	// EventAdmin
@@ -34,9 +36,7 @@ public class ComponentServiceBus implements BusServices, EventAdmin {
 	}
 
 	@Override
-	public void sendEvent(Event event) {
-		System.out.println("INCOMING EVENT: " + event.getTopic());
-		
+	public void sendEvent(Event event) {		
 		switch(event.getTopic()) {
 		
 		case "TicketAutomatonStarted": components.get("RouteSystem").handleEvent(event); break;

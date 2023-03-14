@@ -1,6 +1,7 @@
 package documentsystemservice.behaviour;
 
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 import org.osgi.service.event.Event;
 
@@ -13,7 +14,8 @@ import documentsystemservice.structure.SchnaeppchenTarif;
 import documentsystemservice.structure.TicketDocumentTemplate;
 
 public class DocumentSystemService extends AbstractComponent{
-	
+	private static final Logger LOG = Logger.getLogger(DocumentSystemService.class.getName());
+
 	private BusServices busService;
 
 	public DocumentSystemService(String name) {
@@ -35,7 +37,9 @@ public class DocumentSystemService extends AbstractComponent{
 		IRouteDetails routeDetails = ((IRouteDetails) event.getProperty("RouteDetails"));
 		
 		TicketDocumentTemplate ticket = createTicket(routeDetails);
+		LOG.info("Ticket created");
 		sendTicketCreatedEvent(ticket);
+		
 	}
 	
 	public TicketDocumentTemplate createTicket(IRouteDetails routeDetails) {
