@@ -3,6 +3,7 @@ package printingsystem.behaviour;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import org.osgi.service.event.Event;
 
@@ -11,6 +12,8 @@ import busservice.BusServices;
 import printingsystem.behaviour.service.IPrintableDetails;
 
 public class PrintingSystemService extends AbstractComponent {
+
+	private static final Logger LOG = Logger.getLogger(PrintingSystemService.class.getName());
 
 	private BusServices busService;
 	private static final String LOG_FILE = "ticket.log";
@@ -45,8 +48,10 @@ public class PrintingSystemService extends AbstractComponent {
 	            bufferedWriter.newLine(); 
 	            bufferedWriter.close();
 	            System.out.println("Ticket written to " + LOG_FILE);
+	            LOG.info("Ticket printed");
 	        } catch (IOException e) {
 	            System.err.println("Error writing the ticket: " + e);
+	            LOG.info("Ticket printing failed!");
 	        }
 		return true;
 		

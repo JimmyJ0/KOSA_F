@@ -2,6 +2,7 @@ package pricingsystem.behaviour;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleException;
@@ -16,6 +17,8 @@ import pricingsystem.structure.Price;
 import pricingsystem.structure.RoutePrice;
 
 public class PricingSystemService extends AbstractComponent {
+
+	private static final Logger LOG = Logger.getLogger(PricingSystemService.class.getName());
 
 	private BusServices busService;
 
@@ -35,9 +38,8 @@ public class PricingSystemService extends AbstractComponent {
 
 	@Override
 	public void handleEvent(Event event) {
-		System.out.println(((IPriceable) event.getProperty("route")).getDistance());
-		System.out.println(((IPriceable) event.getProperty("route")).getRoute());
 		runPricingSystem((IPriceable) event.getProperty("route"));
+		LOG.info("Price created");
 	}
 
 	
