@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: TicketAutomaton
 Bundle-SymbolicName: TicketAutomaton
 Bundle-Version: 1.0
-Import-Package: abstractcomponent,
+Import-Package: abstractcomponent.structure,
  bus,
  bus.behaviour,
  busservice,
@@ -12,6 +12,7 @@ Import-Package: abstractcomponent,
  messagingsystem.behaviour,
  org.osgi.framework,
  org.osgi.service.event;version="1.4.1",
+ org.osgi.util.tracker;version="1.5.3",
  pricingsystem.behaviour,
  printingsystem.behaviour,
  routesystemservice,
@@ -20,3 +21,5 @@ Bundle-Activator: ticketautomaton.Activator
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: TicketAutomaton
 Bundle-ActivationPolicy: lazy
+Export-Package: ticketautomaton,
+ ticketautomaton.service

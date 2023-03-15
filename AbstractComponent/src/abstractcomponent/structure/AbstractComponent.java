@@ -1,4 +1,4 @@
-package abstractcomponent;
+package abstractcomponent.structure;
 
 import componentservice.service.ComponentService;
 

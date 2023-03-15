@@ -8,7 +8,8 @@ import java.util.logging.Logger;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleException;
 import org.osgi.service.event.Event;
-import abstractcomponent.AbstractComponent;
+
+import abstractcomponent.structure.AbstractComponent;
 import busservice.BusServices;
 import routesystemservice.Activator;
 import routesystemservice.configuration.InputValidator;
@@ -48,7 +49,6 @@ public class RouteSystemService extends AbstractComponent{
 		long felixGogoShellBundleID = -1;
 		
 		for(int i = 0; i < bun.length; i++) {
-			System.out.println(bun[i]);
 			if(bun[i].getSymbolicName().equals("org.apache.felix.gogo.shell")) {
 				felixGogoShellBundleID = bun[i].getBundleId();
 				break;
@@ -66,7 +66,7 @@ public class RouteSystemService extends AbstractComponent{
 	
 	
 	public Route createRoute() {
-//		disableConsoleForProjectTest(); 
+		disableConsoleForProjectTest(); 
 		InputValidator iv = new InputValidator();
 		HashMap<Integer, Locations> locations = new HashMap<Integer, Locations>();
 		for (int i = 0; i < Locations.values().length; i++) {
@@ -78,10 +78,12 @@ public class RouteSystemService extends AbstractComponent{
 		for (int i = 0; i < locations.size(); i++) {
 			System.out.println(i + 1 + ". " + locations.get(i + 1));
 		}
-		System.out.println("\n");
+		System.out.println("");
 
-//		Locations startLocation = locations.get(iv.getSingleNumber(locations.size()));
-		Locations startLocation = locations.get(1); // ! ZUM TESTEN
+		Locations startLocation = locations.get(iv.getSingleNumber(locations.size()));
+		System.out.println();
+
+//		Locations startLocation = locations.get(1); // ! ZUM TESTEN
 
 		List<Routes> availableRoutes = new ArrayList<>();
 
@@ -130,8 +132,10 @@ public class RouteSystemService extends AbstractComponent{
 					+ availableRoutes.get(i).toString().substring(availableRoutes.get(i).toString().indexOf("_") + 1));
 		}
 		System.out.println("Please pick your destination");
-//		Routes chosenRoute = availableRoutes.get(iv.getSingleNumber(availableRoutes.size()) - 1);
-		Routes chosenRoute = availableRoutes.get(1); // ! ZUM TESTEN
+		Routes chosenRoute = availableRoutes.get(iv.getSingleNumber(availableRoutes.size()) - 1);
+		System.out.println();
+
+//		Routes chosenRoute = availableRoutes.get(1); // ! ZUM TESTEN
 
 		Route newRoute = new Route(chosenRoute);
 		

@@ -24,6 +24,9 @@ public class Activator implements BundleActivator {
 	private DocumentSystemService documentSystemService;
 	private MessagingSystemService messagingSystemService;
 	private PrintingSystemService printingSystemService;
+	
+	//.
+	private TicketAutomat ticketAutomat;
 
 	private static BundleContext context;
 
@@ -39,12 +42,18 @@ public class Activator implements BundleActivator {
 		messagingSystemService = new MessagingSystemService("MessagingSystem");
 		printingSystemService = new PrintingSystemService("PrintingSystem");
 		
+		//.
+		ticketAutomat = new TicketAutomat(bundleContext);
+		
 		bundleContext.registerService(ComponentServiceBus.class, componentServiceBus, null);
 		bundleContext.registerService(RouteSystemService.class, routeSystemService, null);
 		bundleContext.registerService(PricingSystemService.class, pricingSystemService, null);
 		bundleContext.registerService(DocumentSystemService.class, documentSystemService, null);
 		bundleContext.registerService(MessagingSystemService.class, messagingSystemService, null);
 		bundleContext.registerService(PrintingSystemService.class, printingSystemService, null);
+		bundleContext.registerService(TicketAutomat.class, ticketAutomat, null);
+		
+		
 		
 		routeSystemService.setBus(componentServiceBus);
 		pricingSystemService.setBus(componentServiceBus);
@@ -52,11 +61,10 @@ public class Activator implements BundleActivator {
 		messagingSystemService.setBus(componentServiceBus);
 		printingSystemService.setBus(componentServiceBus);
 		
-		
-		componentServiceBus.sendEvent(new Event("TicketAutomatonStarted", new HashMap<>()));
+//		ticketAutomat.runTicketAutomat();
+//		componentServiceBus.sendEvent(new Event("TicketAutomatonStarted", new HashMap<>()));
 	
 		Activator.context = bundleContext;
-		//TODO Automaton automatisch restarten lassen
 
 	}
 

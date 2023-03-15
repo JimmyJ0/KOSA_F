@@ -15,7 +15,7 @@ public abstract class TicketDocumentTemplate {
 	public TicketDocumentTemplate(String route, double distance, String tarif, double price) {
 		super();
 		this.route = route;
-		this.distance = distance;
+		this.distance = Math.round(distance * 100.0)/100.0;;
 		this.tarif = tarif;
 		this.price = Math.round(price * 100.0)/100.0;
 		

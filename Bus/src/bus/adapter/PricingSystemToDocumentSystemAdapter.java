@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import org.osgi.service.event.Event;
 
-import abstractcomponent.AbstractComponent;
+import abstractcomponent.structure.AbstractComponent;
 import documentsystemservice.service.IRouteDetails;
 import pricingsystem.structure.RoutePrice;
 

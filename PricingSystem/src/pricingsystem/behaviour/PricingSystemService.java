@@ -8,7 +8,7 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleException;
 import org.osgi.service.event.Event;
 
-import abstractcomponent.AbstractComponent;
+import abstractcomponent.structure.AbstractComponent;
 import busservice.BusServices;
 import pricingsystem.Activator;
 import pricingsystem.behaviour.service.IPriceable;
@@ -49,7 +49,6 @@ public class PricingSystemService extends AbstractComponent {
 		Arrays.stream(bundles).filter(bundle -> bundle.getSymbolicName().equals("org.apache.felix.gogo.shell")).findFirst().
 		ifPresent(bundle -> {
 			try {
-				System.out.println("Deactivate gogo-shell");
 				bundle.stop();
 			} catch (BundleException e) {
 				e.printStackTrace();
@@ -60,7 +59,7 @@ public class PricingSystemService extends AbstractComponent {
 	public RoutePrice runPricingSystem(IPriceable priceable) {
 
 		InputValidator iv = new InputValidator();
-//		disableConsole();
+		disableConsole();
 		System.out.println("\n\n");
 		// System.out.println("TOPIC: " + event.getTopic());
 		// System.out.println("ROUTE: " + event.getProperty("route"));
@@ -73,8 +72,9 @@ public class PricingSystemService extends AbstractComponent {
 		System.out.println(String.format("2. GünstigerReisen-Tarif: %.2f€", price.getGRT()));
 		System.out.println(String.format("3. Schnäppchen-Tarif: %.2f€", price.getST()));
 		System.out.println("Please select your Ticketoption: ");
-//		int input = iv.getSingleNumber(3);
-		int input = 3;
+		int input = iv.getSingleNumber(3);
+		System.out.println();
+//		int input = 3;
 
 		double chosenPrice = 0.0;
 		String tarif = "";

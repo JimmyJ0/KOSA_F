@@ -10,4 +10,4 @@ Import-Package: componentservice.service,
  org.osgi.framework;version="1.3.0",
  org.osgi.service.event;version="1.4.1"
 Bundle-ActivationPolicy: lazy
-Export-Package: abstractcomponent
+Export-Package: abstractcomponent.structure

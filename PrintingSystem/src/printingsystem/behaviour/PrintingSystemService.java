@@ -3,11 +3,12 @@ package printingsystem.behaviour;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.osgi.service.event.Event;
 
-import abstractcomponent.AbstractComponent;
+import abstractcomponent.structure.AbstractComponent;
 import busservice.BusServices;
 import printingsystem.behaviour.service.IPrintableDetails;
 
@@ -34,7 +35,6 @@ public class PrintingSystemService extends AbstractComponent {
 
 	@Override
 	public void handleEvent(Event event) {
-		System.out.println(event.getTopic());
 		IPrintableDetails printDetails = ((IPrintableDetails) event.getProperty("PrintDetails"));
 		printDetails(printDetails.getContent());
 		
@@ -47,10 +47,9 @@ public class PrintingSystemService extends AbstractComponent {
 	            bufferedWriter.write(printDetails);
 	            bufferedWriter.newLine(); 
 	            bufferedWriter.close();
-	            System.out.println("Ticket written to " + LOG_FILE);
-	            LOG.info("Ticket printed");
+	            LOG.info("Ticket printed to " + LOG_FILE);
 	        } catch (IOException e) {
-	            System.err.println("Error writing the ticket: " + e);
+	        	System.err.println("Error writing the ticket: " + e);
 	            LOG.info("Ticket printing failed!");
 	        }
 		return true;

@@ -2,7 +2,7 @@ package busservice;
 
 import org.osgi.service.event.Event;
 
-import abstractcomponent.AbstractComponent;
+import abstractcomponent.structure.AbstractComponent;
 
 // Gibt Methoden vor, mit denen Komponenten mit dem Bus interagieren können
 public interface BusServices {

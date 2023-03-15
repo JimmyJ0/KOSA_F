@@ -4,7 +4,7 @@ import java.util.HashMap;
 import messagingsystem.service.IMessagable;
 import org.osgi.service.event.Event;
 
-import abstractcomponent.AbstractComponent;
+import abstractcomponent.structure.AbstractComponent;
 import documentsystemservice.structure.TicketDocumentTemplate;
 import printingsystem.behaviour.service.IPrintableDetails;
 

@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 
 import org.osgi.service.event.Event;
 
-import abstractcomponent.AbstractComponent;
+import abstractcomponent.structure.AbstractComponent;
 import busservice.BusServices;
 import documentsystemservice.service.IRouteDetails;
 import documentsystemservice.structure.GuenstigerReisenTarif;
@@ -33,7 +33,6 @@ public class DocumentSystemService extends AbstractComponent{
 	}
 	@Override
 	public void handleEvent(Event event) {
-		System.out.println(event.getTopic());
 		IRouteDetails routeDetails = ((IRouteDetails) event.getProperty("RouteDetails"));
 		
 		TicketDocumentTemplate ticket = createTicket(routeDetails);
@@ -55,7 +54,7 @@ public class DocumentSystemService extends AbstractComponent{
 	private TicketDocumentTemplate createTicketDocument(TicketDocumentTemplate ticket) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("\n\nThanks for traveling with CRAZY TRAVEL \n\n");
-		sb.append("Tarif: " + ticket.getTarif() + "\n");
+		sb.append("Tariff: " + ticket.getTarif() + "\n");
 		sb.append("Route: " + ticket.getRoute() + "\n");
 		sb.append("Distance: " + ticket.getDistance() + " km \n");
 		sb.append("Price: " + ticket.getPrice() + " EURO \n");
@@ -67,7 +66,7 @@ public class DocumentSystemService extends AbstractComponent{
 		case "Schnäppchen-Tarif": sb.append(((SchnaeppchenTarif) ticket).getSomeAdditionalSchnaeppchenInfos()); break;
 		}
 		
-		sb.append("\n\nWe wish you a pleasant trip!");
+		sb.append("\n\nWe wish you a pleasant trip!\n");
 		
 		ticket.setTicketContent(sb.toString());
 
