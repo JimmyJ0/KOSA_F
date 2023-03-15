@@ -1,15 +1,11 @@
 package documentsystemservice.behaviour;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import documentsystemservice.service.IRouteDetails;
-import documentsystemservice.structure.GuenstigerReisenTarif;
-import documentsystemservice.structure.NormalTarif;
-import documentsystemservice.structure.SchnaeppchenTarif;
-import documentsystemservice.structure.TicketDocumentTemplate;
 
 class DocumentSystemServiceTest {
 	

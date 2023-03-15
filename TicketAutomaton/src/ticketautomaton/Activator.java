@@ -1,13 +1,11 @@
 package ticketautomaton;
 
-import java.util.HashMap;
-import messagingsystem.behaviour.MessagingSystemService;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
-import org.osgi.service.event.Event;
 
 import bus.behaviour.ComponentServiceBus;
 import documentsystemservice.behaviour.DocumentSystemService;
+import messagingsystem.behaviour.MessagingSystemService;
 import pricingsystem.behaviour.PricingSystemService;
 import printingsystem.behaviour.PrintingSystemService;
 import routesystemservice.behaviour.RouteSystemService;

@@ -1,13 +1,12 @@
 package bus.behaviour.adapter;
 
 import java.util.HashMap;
-import messagingsystem.service.IMessagable;
-import printingsystem.service.IPrintableDetails;
 
 import org.osgi.service.event.Event;
 
 import abstractcomponent.structure.AbstractComponent;
 import documentsystemservice.structure.TicketDocumentTemplate;
+import messagingsystem.service.IMessagable;
 
 public class DocumentSystemToMessagingSystemAdapter {
 	public void map(AbstractComponent messagingSystem, Event event) {
