@@ -7,9 +7,9 @@ import org.osgi.service.event.Event;
 import org.osgi.util.tracker.ServiceTracker;
 
 import bus.behaviour.ComponentServiceBus;
-import ticketautomaton.service.ITicketAutomat;
+import ticketautomaton.service.ITicketAutomatService;
 
-public class TicketAutomat implements ITicketAutomat {
+public class TicketAutomat implements ITicketAutomatService {
 	
 	private BundleContext context;
 	

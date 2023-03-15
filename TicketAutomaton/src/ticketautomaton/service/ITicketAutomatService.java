@@ -1,6 +1,6 @@
 package ticketautomaton.service;
 
-public interface ITicketAutomat {
+public interface ITicketAutomatService {
 	
 	public void runTicketAutomat();
 
