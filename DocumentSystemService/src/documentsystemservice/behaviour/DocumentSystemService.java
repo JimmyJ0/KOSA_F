@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 import org.osgi.service.event.Event;
 
 import abstractcomponent.structure.AbstractComponent;
-import busservice.BusServices;
+import busservice.service.BusServices;
 import documentsystemservice.service.IRouteDetails;
 import documentsystemservice.structure.GuenstigerReisenTarif;
 import documentsystemservice.structure.NormalTarif;

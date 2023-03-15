@@ -9,8 +9,8 @@ import java.util.logging.Logger;
 import org.osgi.service.event.Event;
 
 import abstractcomponent.structure.AbstractComponent;
-import busservice.BusServices;
-import printingsystem.behaviour.service.IPrintableDetails;
+import busservice.service.BusServices;
+import printingsystem.service.IPrintableDetails;
 
 public class PrintingSystemService extends AbstractComponent {
 

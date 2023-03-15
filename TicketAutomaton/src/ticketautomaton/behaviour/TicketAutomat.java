@@ -1,4 +1,4 @@
-package ticketautomaton;
+package ticketautomaton.behaviour;
 
 import java.util.HashMap;
 

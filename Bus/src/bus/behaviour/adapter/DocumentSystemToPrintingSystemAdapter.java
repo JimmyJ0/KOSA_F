@@ -1,4 +1,4 @@
-package bus.adapter;
+package bus.behaviour.adapter;
 
 import java.util.HashMap;
 
@@ -6,7 +6,7 @@ import org.osgi.service.event.Event;
 
 import abstractcomponent.structure.AbstractComponent;
 import documentsystemservice.structure.TicketDocumentTemplate;
-import printingsystem.behaviour.service.IPrintableDetails;
+import printingsystem.service.IPrintableDetails;
 
 public class DocumentSystemToPrintingSystemAdapter {
 	

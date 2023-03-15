@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 import org.osgi.service.event.Event;
 
 import abstractcomponent.structure.AbstractComponent;
-import busservice.BusServices;
+import busservice.service.BusServices;
 import messagingsystem.service.IMessagable;
 
 public class MessagingSystemService extends AbstractComponent {

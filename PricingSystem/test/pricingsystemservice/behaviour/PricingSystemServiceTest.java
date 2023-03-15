@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import pricingsystem.behaviour.PricingSystemService;
-import pricingsystem.behaviour.service.IPriceable;
+import pricingsystem.service.IPriceable;
 
 
 class PricingSystemServiceTest {

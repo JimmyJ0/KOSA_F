@@ -7,11 +7,11 @@ import org.osgi.service.event.Event;
 import org.osgi.service.event.EventAdmin;
 
 import abstractcomponent.structure.AbstractComponent;
-import bus.adapter.DocumentSystemToMessagingSystemAdapter;
-import bus.adapter.DocumentSystemToPrintingSystemAdapter;
-import bus.adapter.PricingSystemToDocumentSystemAdapter;
-import bus.adapter.RouteSystemToPricingSystemAdapter;
-import busservice.BusServices;
+import bus.behaviour.adapter.DocumentSystemToMessagingSystemAdapter;
+import bus.behaviour.adapter.DocumentSystemToPrintingSystemAdapter;
+import bus.behaviour.adapter.PricingSystemToDocumentSystemAdapter;
+import bus.behaviour.adapter.RouteSystemToPricingSystemAdapter;
+import busservice.service.BusServices;
 
 public class ComponentServiceBus implements BusServices, EventAdmin {
 	private static final Logger LOG = Logger.getLogger(ComponentServiceBus.class.getName());

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import printingsystem.behaviour.PrintingSystemService;
-import printingsystem.behaviour.service.IPrintableDetails;
+import printingsystem.service.IPrintableDetails;
 
 class PrintingSystemServiceTest {
 

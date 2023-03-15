@@ -1,4 +1,4 @@
-package pricingsystem.configuration;
+package routesystemservice.util;
 
 
 

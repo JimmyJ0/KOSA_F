@@ -11,6 +11,7 @@ import documentsystemservice.behaviour.DocumentSystemService;
 import pricingsystem.behaviour.PricingSystemService;
 import printingsystem.behaviour.PrintingSystemService;
 import routesystemservice.behaviour.RouteSystemService;
+import ticketautomaton.behaviour.TicketAutomat;
 
 // Sammelstelle aller Abhängigkeiten
 // Instanziiert Komponenten und injiziert den Bus

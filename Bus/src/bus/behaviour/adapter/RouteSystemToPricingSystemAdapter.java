@@ -1,11 +1,11 @@
-package bus.adapter;
+package bus.behaviour.adapter;
 
 import java.util.HashMap;
 
 import org.osgi.service.event.Event;
 
 import abstractcomponent.structure.AbstractComponent;
-import pricingsystem.behaviour.service.IPriceable;
+import pricingsystem.service.IPriceable;
 import routesystemservice.structure.Route;
 
 public class RouteSystemToPricingSystemAdapter {

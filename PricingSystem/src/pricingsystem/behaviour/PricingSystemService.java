@@ -9,12 +9,12 @@ import org.osgi.framework.BundleException;
 import org.osgi.service.event.Event;
 
 import abstractcomponent.structure.AbstractComponent;
-import busservice.BusServices;
+import busservice.service.BusServices;
 import pricingsystem.Activator;
-import pricingsystem.behaviour.service.IPriceable;
-import pricingsystem.configuration.InputValidator;
+import pricingsystem.service.IPriceable;
 import pricingsystem.structure.Price;
 import pricingsystem.structure.RoutePrice;
+import pricingsystem.util.InputValidator;
 
 public class PricingSystemService extends AbstractComponent {
 
@@ -60,12 +60,8 @@ public class PricingSystemService extends AbstractComponent {
 
 		InputValidator iv = new InputValidator();
 		disableConsole();
-		System.out.println("\n\n");
-		// System.out.println("TOPIC: " + event.getTopic());
-		// System.out.println("ROUTE: " + event.getProperty("route"));
-		// System.out.println("DISTANCE: " + event.getProperty("distance"));
+		System.out.println("");
 
-//		Price price = new Price(Double.parseDouble(event.getProperty("distance").toString()));
 		Price price = new Price(priceable.getDistance());
 		
 		System.out.println(String.format("1. Normaltarif: %.2f€", price.getNT()));

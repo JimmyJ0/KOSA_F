@@ -1,4 +1,4 @@
-package pricingsystem.behaviour.service;
+package pricingsystem.service;
 
 public interface IPriceable {
 	

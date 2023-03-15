@@ -6,7 +6,7 @@ Bundle-Version: 1.0
 Import-Package: abstractcomponent.structure,
  bus,
  bus.behaviour,
- busservice,
+ busservice.service,
  componentservice.service,
  documentsystemservice.behaviour,
  messagingsystem.behaviour,
@@ -22,4 +22,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: TicketAutomaton
 Bundle-ActivationPolicy: lazy
 Export-Package: ticketautomaton,
+ ticketautomaton.behaviour,
  ticketautomaton.service

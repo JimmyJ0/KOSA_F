@@ -1,4 +1,4 @@
-package printingsystem.behaviour.service;
+package printingsystem.service;
 
 public interface IPrintableDetails {
 	String getContent();

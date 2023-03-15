@@ -1,4 +1,4 @@
-package busservice;
+package busservice.service;
 
 import org.osgi.service.event.Event;
 

@@ -1,4 +1,4 @@
-package bus.adapter;
+package bus.behaviour.adapter;
 
 import java.util.HashMap;
 
